@@ -187,8 +187,8 @@ class CreateSecurityGroupRule(neutronV20.CreateCommand):
             help=_('Security group name or id to add rule.'))
         parser.add_argument(
             '--direction',
-            default='ingress', choices=['ingress', 'egress'],
-            help=_('Direction of traffic: ingress/egress'))
+            default='ingress', choices=['ingress', 'egress', 'ingress-src', 'egress-src'],
+            help=_('Direction of traffic: ingress/egress/ingress-src/egress-src'))
         parser.add_argument(
             '--ethertype',
             default='IPv4',
