@@ -209,6 +209,18 @@ class CreateSecurityGroupRule(neutronV20.CreateCommand):
             '--port_range_max',
             help=argparse.SUPPRESS)
         parser.add_argument(
+            '--source-port-range-min',
+            help=_('Starting source port range'))
+        parser.add_argument(
+            '--source_port_range_min',
+            help=argparse.SUPPRESS)
+        parser.add_argument(
+            '--source-port-range-max',
+            help=_('Ending source port range'))
+        parser.add_argument(
+            '--source_port_range_max',
+            help=argparse.SUPPRESS)
+        parser.add_argument(
             '--remote-ip-prefix',
             help=_('CIDR to match on'))
         parser.add_argument(
@@ -237,6 +249,12 @@ class CreateSecurityGroupRule(neutronV20.CreateCommand):
         if parsed_args.port_range_max:
             body['security_group_rule'].update(
                 {'port_range_max': parsed_args.port_range_max})
+        if parsed_args.source_port_range_min:
+            body['security_group_rule'].update(
+                {'source_port_range_min': parsed_args.source_port_range_min})
+        if parsed_args.source_port_range_max:
+            body['security_group_rule'].update(
+                {'source_port_range_max': parsed_args.source_port_range_max})
         if parsed_args.remote_ip_prefix:
             body['security_group_rule'].update(
                 {'remote_ip_prefix': parsed_args.remote_ip_prefix})
